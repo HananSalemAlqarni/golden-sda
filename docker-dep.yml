@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - image: mysql
+          name: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: DevOps2022
+            - name: MYSQL_DATABASE
+              value: 
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: golden-mysql-persistent-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: golden-mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: golden-mysql-pv-claim

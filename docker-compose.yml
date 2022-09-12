@@ -24,7 +24,7 @@ services:
     ports:
     - 3306:3306
     environment:
-      MYSQL_admin_PASSWORD: DevOps2022
+      MYSQL_ROOT_PASSWORD: DevOps2022
       MYSQL_DATABASE: goldendb
     volumes:
     - goldenwaste-mysql:/var/lib/mysql
