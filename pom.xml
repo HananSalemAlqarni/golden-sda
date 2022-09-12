@@ -76,6 +76,13 @@
             <version>3.6.0</version>
         </dependency>
 	</dependencies>
+    <distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>fec61df33057-snapshots</name>
+        <url>http://ec2-3-82-99-28.compute-1.amazonaws.com/artifactory/maven-gold-libs-snapshot-local</url>
+    </snapshotRepository>
+</distributionManagement>
 
 	<build>
 		<plugins>
