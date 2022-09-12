@@ -5,7 +5,7 @@ services:
     container_name: golden-app
     build: .
     ports:
-    - 80:8080
+    - 8080:8080
     environment:
     - GOLDEN_DB_URL=devops22.cehxjqytwbqs.us-east-1.rds.amazonaws.com
     - GOLDEN_DB_NAME=goldendb
@@ -22,9 +22,9 @@ services:
     container_name: goldenwastesqldb
     image: mysql
     ports:
-    - 80:3306
+    - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: DevOps2022
+      MYSQL_admin_PASSWORD: DevOps2022
       MYSQL_DATABASE: goldendb
     volumes:
     - goldenwaste-mysql:/var/lib/mysql
@@ -35,3 +35,12 @@ services:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 20s
       retries: 10
+
+volumes:
+  goldenwaste-mysql:
+  goldenwaste-mysql-config:
+
+networks:
+  goldenwaste-network:
+    name: goldenwaste-network
+    driver: bridge
